@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my-apps
     'notes_api',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
