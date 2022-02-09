@@ -13,3 +13,11 @@ def getNotes(request):
     notes = Note.objects.all()
     serializer = NoteSerializer(notes, many=True)
     return Response(serializer.data)
+
+
+@api_view(["GET"])
+def getNote(request,id):
+    note = Note.objects.get(id=id)
+    serializer = NoteSerializer(note)
+    return Response(serializer.data)
+
