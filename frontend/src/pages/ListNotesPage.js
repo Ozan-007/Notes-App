@@ -16,7 +16,11 @@ const ListNotesPage = () => {
   }
 
   return (
-    <div>NOTES</div>
+    <div>
+      <div className="list">
+        {notes.map(note => <h3 key={note.id}>{note.body}</h3> )}
+      </div>
+    </div>
     )
 
 }
