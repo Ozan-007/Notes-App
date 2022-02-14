@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react'
+import ListItems from '../components/ListItems'
 
 const ListNotesPage = () => {
   
@@ -18,7 +19,9 @@ const ListNotesPage = () => {
   return (
     <div>
       <div className="list">
-        {notes.map(note => <h3 key={note.id}>{note.body}</h3> )}
+        {notes.map(note =>
+          <ListItems key={note.id} note={note} />
+          )}
       </div>
     </div>
     )
