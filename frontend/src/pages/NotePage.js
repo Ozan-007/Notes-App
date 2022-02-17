@@ -11,7 +11,7 @@ const NotePage = () => {
 
   useEffect(() => {
     getNote()
-  })
+  },[])
   
   let getNote = async () => {
     let response = await fetch(`/api/notes/${noteId.id}`)
