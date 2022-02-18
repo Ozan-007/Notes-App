@@ -11,7 +11,7 @@ const NotePage = () => {
 
   useEffect(() => {
     getNote()
-  },[])
+  },[noteId.id])
   
   let getNote = async () => {
     let response = await fetch(`/api/notes/${noteId.id}`)
@@ -22,8 +22,11 @@ const NotePage = () => {
   
 
   return (
-    <div>
-      <p>{note?.body}</p>
+    <div className="note">
+      <div className="note-header">
+        
+      </div>
+      <textarea defaultValue={note?.body}></textarea>
     </div>
   )
 }
