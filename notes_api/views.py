@@ -21,3 +21,16 @@ def getNote(request,id):
     serializer = NoteSerializer(note)
     return Response(serializer.data)
 
+@api_view(["GET","PUT"])
+def updateNote(request,pk):
+    if request.method == "GET":
+        note = Note.objects.get(id=pk)
+        serializer = NoteSerializer(note)
+        return Response(serializer.data)
+    if request.method == "PUT":
+        note = Note.objects.get(id=pk)
+        serializer = NoteSerializer(instance=note,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+    return Response(serializer.data)
+
