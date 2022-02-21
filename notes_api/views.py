@@ -21,7 +21,7 @@ def getNote(request,id):
     serializer = NoteSerializer(note)
     return Response(serializer.data)
 
-@api_view(["GET","PUT"])
+@api_view(["GET","PUT","DELETE"])
 def updateNote(request,pk):
     if request.method == "GET":
         note = Note.objects.get(id=pk)
@@ -32,5 +32,15 @@ def updateNote(request,pk):
         serializer = NoteSerializer(instance=note,data=request.data)
         if serializer.is_valid():
             serializer.save()
-    return Response(serializer.data)
+        return Response(serializer.data)
 
+@api_view(["GET","DELETE"])
+def deleteNote(request,id):
+    if request.method == "GET":
+        note = Note.objects.get(id=id)
+        serializer = NoteSerializer(note)
+        return Response(serializer.data)
+    if request.method == "DELETE":
+        note = Note.objects.get(id=id)
+        note.delete()
+        return Response("Note has been removed.")
