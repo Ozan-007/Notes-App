@@ -18,16 +18,30 @@ const NotePage = () => {
     setNote(data);
   };
 
+  let handleChange = async () => {
+      await fetch(`/api/notes/${noteId.id}/update`,{
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(note)
+  })
+};
+
+
+
+
   return (
     <div className="note">
       <div className="note-header">
         <h3>
           <Link to="/">
-            <ArrowLeft />
+            <div >
+            <ArrowLeft onClick={handleChange} />
+            </div>
           </Link>
         </h3>
       </div>
-      <textarea defaultValue={note?.body}></textarea>
+      <textarea onChange={e => setNote({...note,'body':e.target.value})} defaultValue={note?.body} ></textarea>
+      {/* spread operator for objects, we can use them to change the specific parts of an object */}
     </div>
   );
 };

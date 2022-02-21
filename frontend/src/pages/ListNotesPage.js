@@ -19,7 +19,7 @@ const ListNotesPage = () => {
   return (
     <div className="notes">
       <div className="notes-header">
-        <h2 className="notes-title">&#9782; Notes</h2>
+        <h2 className="notes-title">&#9782; My Notes</h2>
         <p className="notes-count">{notes.length}</p>
       </div>
       <div className="list-notes">
